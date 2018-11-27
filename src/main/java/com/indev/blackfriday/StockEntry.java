@@ -47,11 +47,20 @@ public class StockEntry {
         isBlackFriday = blackFriday;
     }
 
-    public float priceForSells()
+    public float sellsPrice()
     {
-        if(!isBlackFriday) return this.getProduct().getPrice()*5*(1+product.getMargin());
-        else return this.getProduct().getPrice()*10*(1+product.getMargin());
+        if(!isBlackFriday && quantity>=5) {
 
+            this.setQuantity(this.getQuantity()-5);
+            return this.getProduct().getPrice()*5*(1+product.getMargin());
+        }
+        if (isBlackFriday && quantity>=10) {
+            this.setQuantity(this.getQuantity()-10);
+            isBlackFriday = false;
+            return this.getProduct().getPrice()*10*(1+product.getMargin());
+
+        }
+         return -1;
     }
 
 

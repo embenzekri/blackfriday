@@ -20,18 +20,10 @@ public class Company {
     {
         float price=0;
         StockEntry stockEntry = getStockEntry(productName);
-        if(stockEntry!=null && stockEntry.getQuantity()>=5&&!isBlackFriday)
+        if(stockEntry!=null)
         {
-               price = stockEntry.priceFor5Sells();
-               stockEntry.setQuantity((int) (stockEntry.getQuantity()-5));
+               price = stockEntry.sellsPrice();
                totalAssets+=price;
-        }
-        else if(stockEntry!=null && stockEntry.getQuantity()>=10&&isBlackFriday)
-        {
-            price = stockEntry.priceFor5Sells()*2;
-            stockEntry.setQuantity((int) (stockEntry.getQuantity()-10));
-            totalAssets+=price;
-            isBlackFriday = false;
         }
         else
         {
