@@ -6,6 +6,7 @@ import java.util.List;
 public class Company {
 
     private List<Product> products;
+    private ProductFactory productFactory= new ProductFactory();
 
     public Company(){
 
@@ -13,29 +14,23 @@ public class Company {
     }
 
 
-    public float sells(String capsule) {
+    public float sells(String productName)
+    {
+        float price=0;
+        Product product = getProduct(productName);
+        if(product.getQuantity()>=5)
+        {
+            price = product.getPrice()*5+(product.getPrice()*5*(20/100));
+            product.setQuantity((int) (product.getQuantity()-5));
+        }
         return 0;
     }
 
     public void stock(int i, String nameProduct, int i1) {
-        Product product ;
-        if(nameProduct.equals("capsule"))
-        {
-            product = new Capsule();
-            product.setName("capsule");
-            product.setQuantity(i);
-            product.setPrice(i1);
 
+            Product product = productFactory.getInstanceOfProduct(i,nameProduct,i1);
             products.add(product);
-        }
-        if(nameProduct.equals("machine"))
-        {
-            product = new Machine();
-            product.setName("machine");
-            product.setQuantity(i);
-            product.setPrice(i1);
-            products.add(product);
-        }
+
     }
 
     public Company to(int i) {
@@ -58,5 +53,13 @@ public class Company {
 
     public Company blackFriday() {
         return this;
+    }
+
+
+    public Product getProduct(String productName)
+    {
+        for(int i=0;i<products.size();i++)
+            if (products.get(i).getName().equals(productName)) return products.get(i);
+        return null;
     }
 }
