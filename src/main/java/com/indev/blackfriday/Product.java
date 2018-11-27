@@ -5,7 +5,8 @@ public class Product {
     private String name;
     private int price;
     private int quantity;
-
+    private int maringOfSale;
+    private int saleQuantity;
 
 
     public String getName() {
@@ -30,5 +31,21 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getMaringOfSale() {
+        return maringOfSale;
+    }
+
+    public void setMaringOfSale(int maringOfSale) {
+        this.maringOfSale = maringOfSale;
+    }
+
+    public int getSaleQuantity() {
+        return saleQuantity;
+    }
+
+    public void setSaleQuantity(int saleQuantity) {
+        this.saleQuantity = saleQuantity;
     }
 }

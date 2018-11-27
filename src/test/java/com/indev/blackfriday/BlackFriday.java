@@ -30,7 +30,7 @@ public class BlackFriday {
     public void sellsProduct() {
         Company company = new Company();
         company.stock(10, "capsule", 2);
-        float salePrice = company.sells("capsule");
+        int salePrice = company.sells("capsule");
         Assert.assertEquals(12, salePrice);
         Assert.assertEquals(22, company.totalAssets());
     }

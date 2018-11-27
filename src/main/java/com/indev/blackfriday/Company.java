@@ -9,16 +9,17 @@ public class Company {
 
     List<Product> productList = new ArrayList<Product>();
 
-    public float sells(String capsule) {
-        float sum = 0;
+    public int sells(String capsule) {
+        int sum = 0;
         int total = 0;
         for(int i = 0; i<productList.size(); i++) {
-
             Product product = productList.get(i);
             if(product.getName().equals(capsule)){
+                product.setMaringOfSale(20);
                 total =product.getPrice() * 5;
-                sum =  total + (total*20)/100 ;
+                sum =  total + (total*product.getMaringOfSale())/100 ;
                 product.setQuantity(product.getQuantity()-5);
+                product.setSaleQuantity(5);
                 break;
             }
         }
@@ -42,12 +43,15 @@ public class Company {
     }
 
     public int totalAssets() {
-        int total = 0;
+        int totalSale = 0;
+        int totalNoSale = 0;
+        int sum;
         for(int i = 0; i<productList.size(); i++){
             Product product = productList.get(i);
-            total+= product.getPrice() * product.getQuantity();
+            totalNoSale += product.getPrice() * product.getQuantity();
+            totalSale+= product.getPrice()*product.getSaleQuantity() + product.getPrice()*product.getSaleQuantity()*product.getMaringOfSale()/100;
         }
-        return total;
+        return totalSale+totalNoSale;
     }
 
     public Company blackFriday() {
