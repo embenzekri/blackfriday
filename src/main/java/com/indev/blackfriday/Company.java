@@ -17,7 +17,10 @@ public class Company {
 
     public void stock(int quantity, String type, int price) {
 
-        stock.add(new Produit(quantity, type, price));
+        if(type.equals("capsule"))
+        stock.add(new Capsule(quantity, price));
+        else if(type.equals("machine"))
+            stock.add(new Machine(quantity, price));
 
 
     }
