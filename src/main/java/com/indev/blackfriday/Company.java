@@ -20,7 +20,7 @@ public class Company {
         Product product = getProduct(productName);
         if(product.getQuantity()>=5)
         {
-            price = product.getPrice()*5+(product.getPrice()*5*(20/100));
+            price = product.getPrice()*5+(product.getPrice()*5*product.getMargin());
             product.setQuantity((int) (product.getQuantity()-5));
         }
         return 0;
