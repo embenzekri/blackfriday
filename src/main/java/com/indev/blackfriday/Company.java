@@ -1,11 +1,27 @@
 package com.indev.blackfriday;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Company {
+
+    private List<Produit> stock;
+
+    public Company() {
+        stock=new LinkedList<Produit>();
+    }
+
     public float sells(String capsule) {
         return 0;
     }
 
-    public void stock(int i, String capsule, int i1) {
+    public void stock(int quantity, String type, int price) {
+
+        if(type.equals("capsule"))
+        stock.add(new Capsule(quantity, price));
+        else if(type.equals("machine"))
+            stock.add(new Machine(quantity, price));
+
 
     }
 
@@ -18,7 +34,14 @@ public class Company {
     }
 
     public int totalAssets() {
-        return 0;
+
+        int total=0;
+
+        for (Produit stock: this.stock) {
+            total+=stock.totalAssetsOfProduct();
+        }
+
+        return total;
     }
 
     public Company blackFriday() {
