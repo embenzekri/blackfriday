@@ -6,24 +6,25 @@ import java.util.List;
 
 public class Company {
 
-    List<Product>  companyProducts ;
+    List<Stock>  companyProducts ;
     public Company (){
         if(companyProducts == null)
-        companyProducts = new ArrayList<Product>() ;
+        companyProducts = new ArrayList<Stock>() ;
     }
 
 
-    public void stock(int price, String capsule, int contity) {
-        companyProducts.add(new Product(price,capsule,contity)) ;
+    public void stock(int price, String name, int Quantity) {
+        Product p = new Product(price, name) ;
+        companyProducts.add(new Stock(p ,Quantity)) ;
 
     }
 
     public int totalAssets() {
         int  total = 0 ;
-        for (Product oneProduct:companyProducts )
+        for (Stock oneProduct:companyProducts )
         {
-            int price = oneProduct.getPrice() ;
-            int contity = oneProduct.getContity() ;
+            int price = oneProduct.getProduct().getPrice() ;
+            int contity = oneProduct.getQuantity() ;
           total+= price * contity ;
           System.out.println(total);
         }
