@@ -19,6 +19,7 @@ public class Company {
         return salePrice;
     }
 
+
     public void stock(int quantete, String capsule, int price) {
         stockEntries.add(new StockEntry(quantete,capsule,price));
     }
