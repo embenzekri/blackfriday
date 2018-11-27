@@ -1,12 +1,17 @@
 package com.indev.blackfriday;
 
+import java.util.List;
+
 public class Company {
+
+    private Product product;
+
     public float sells(String capsule) {
         return 0;
     }
 
     public void stock(int i, String capsule, int i1) {
-
+        product = new Product(capsule, i1, i);
     }
 
     public Company to(int i) {
@@ -18,7 +23,7 @@ public class Company {
     }
 
     public int totalAssets() {
-        return 0;
+        return product.getPrice()*product.getQunatity();
     }
 
     public Company blackFriday() {
