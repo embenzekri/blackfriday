@@ -1,13 +1,16 @@
 package com.indev.blackfriday;
 
-public class Product {
+import java.util.ArrayList;
+import java.util.List;
+
+public class StockEntry {
     private String name;
     private int price;
     private int quantity;
 
-    public Product(){}
+    public StockEntry(){}
 
-    public Product(int quantity, String name,int price) {
+    public StockEntry(int quantity, String name, int price) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -36,4 +39,14 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public int calculatePrice(){
+        return price*quantity ;
+    }
+    public float calculateIncomes(){
+        float incomes = 0f;
+        incomes = (float) ((5*getPrice()) + (5*getPrice())*0.2);
+        return incomes;
+    }
+
 }
