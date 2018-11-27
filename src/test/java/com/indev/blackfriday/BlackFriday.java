@@ -17,9 +17,12 @@ public class BlackFriday {
 
     @Test
     public void twoProductsInStock() {
+        //given
         Company company = new Company();
+        //when
         company.stock(10, "capsule", 2);
         company.stock(5, "machine", 100);
+        //then
         Assert.assertEquals(520, company.totalAssets());
     }
 
@@ -31,7 +34,7 @@ public class BlackFriday {
         Company company = new Company();
         company.stock(10, "capsule", 2);
         float salePrice = company.sells("capsule");
-        Assert.assertEquals(12, salePrice);
+        Assert.assertEquals(12, salePrice, 0.0);
         Assert.assertEquals(22, company.totalAssets());
     }
 
@@ -40,9 +43,9 @@ public class BlackFriday {
         Company company = new Company();
         company.stock(10, "capsule", 2);
         float salePrice = company.sells("capsule");
-        Assert.assertEquals(12, salePrice);
+        Assert.assertEquals(12, salePrice,0.0);
         salePrice = company.sells("capsule");
-        Assert.assertEquals(12, salePrice);
+        Assert.assertEquals(12, salePrice,0.0);
         Assert.assertEquals(24, company.totalAssets());
     }
 
@@ -52,9 +55,9 @@ public class BlackFriday {
         company.stock(10, "capsule", 2);
         company.stock(5, "machine", 100);
         float salePrice = company.sells("capsule");
-        Assert.assertEquals(12, salePrice);
+        Assert.assertEquals(12, salePrice,0.0);
         salePrice = company.sells("machine");
-        Assert.assertEquals(120, salePrice);
+        Assert.assertEquals(600, salePrice,0.0);
         Assert.assertEquals(622, company.totalAssets());
     }
 
@@ -64,7 +67,7 @@ public class BlackFriday {
         company.stock(5, "capsule", 2);
         company.stock(5, "machine", 100);
         float salePrice = company.sells("capsule");
-        Assert.assertEquals(12, salePrice);
+        Assert.assertEquals(12, salePrice,0.0);
         company.sells("capsule");
     }
 
@@ -77,7 +80,7 @@ public class BlackFriday {
         company.stock(10, "capsule", 2);
         company.stock(5, "machine", 100);
         float salePrice = company.blackFriday().sells("capsule");
-        Assert.assertEquals(22, salePrice);
+        Assert.assertEquals(22, salePrice,0.0);
         Assert.assertEquals(522, company.totalAssets());
     }
 
@@ -87,9 +90,9 @@ public class BlackFriday {
         company.stock(10, "capsule", 2);
         company.stock(10, "machine", 100);
         float salePrice = company.blackFriday().sells("capsule");
-        Assert.assertEquals(22, salePrice);
+        Assert.assertEquals(22, salePrice,0.0);
         salePrice = company.blackFriday().sells("machine");
-        Assert.assertEquals(12, salePrice);
-        Assert.assertEquals(1112, company.totalAssets());
+        Assert.assertEquals(1100, salePrice,0.0);
+        Assert.assertEquals(1122, company.totalAssets());
     }
 }

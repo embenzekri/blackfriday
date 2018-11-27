@@ -18,12 +18,5 @@ public class Capsule extends Product {
             super.setPrice(price);
     }
 
-    public void setQuantity(int quantity) {
-        super.setQuantity(quantity);
-    }
 
-
-    public double getQuantity() {
-        return super.getQuantity();
-    }
 }

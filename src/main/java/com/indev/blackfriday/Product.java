@@ -4,9 +4,8 @@ public  class  Product {
 
     private String name;
     private int price;
-    private int quantity;
     private float margin = 0.2f;
-
+    private int unitPrice;
     public  String getName(){
         return name;
     };
@@ -23,13 +22,6 @@ public  class  Product {
         this.price = price;
     }
 
-    public double getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public void setMargin(float margin) {
         this.margin = margin;
@@ -37,5 +29,13 @@ public  class  Product {
 
     public float getMargin() {
         return margin;
+    }
+
+    public int getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(int unitPrice) {
+        this.unitPrice = unitPrice;
     }
 }
